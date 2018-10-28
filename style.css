@@ -47,7 +47,7 @@ body {
 }
 
 .thumbs {
-  height: 100px;
+  height: 100%;
   width: auto;
   display: flex;
   justify-content: flex-start;
@@ -64,11 +64,7 @@ body {
   display: flex;
   justify-content: space-between;
   width: 99%;
-}
-
-button {
-  background-color: black;
-  border: none;
+  height: 100px;
 }
 
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize * */
