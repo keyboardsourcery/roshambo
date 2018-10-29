@@ -1,32 +1,41 @@
 $(document).ready(function(){
 
-  var result = '';
+  var randomResult = '';
+  var userChoice = '';
+  var roboChoice = '';
   var options = ['rock', 'paper', 'scissors'];
-  var userChoice = "";
-  var roboChoice = "";
-  var score = $('.header');
+  var positive = ['Well played', 'Best 2 out of 3?', 'Ive gotta hand it to you'];
+  var negative = ['I almost feel bad for you', 'Maybe you should have stayed at home', 'Have fun drinking that!'];
+  var voice = $('.header');
 
   function getNumber() {
     var maxNumber = 3;
     var randomNumber = Math.floor(Math.random()* maxNumber);
-    result=randomNumber;
+    randomResult = randomNumber;
     return false;
+  }
+
+  function response(outcome) {
+    getNumber();
+    voice.html(outcome[randomResult]);
+    return;
   }
 
 // generate random computer hand
 
   function roboThrow() {
     getNumber();
-    if (result == 0) {
+    if (randomResult == 0) {
       $('#robo-hand').attr("src", "img/newRock_flipped.png");
-      roboChoice = options[result];
+      roboChoice = options[randomResult];
 
-    } else if (result == 1) {
+    } else if (randomResult == 1) {
       $('#robo-hand').attr("src", "img/paper1_flipped.png");
-      roboChoice = options[result];
+      roboChoice = options[randomResult];
+
     } else {
       $('#robo-hand').attr("src", "img/scissors_flipped1.png");
-      roboChoice = options[result];
+      roboChoice = options[randomResult];
     }
   }
 
@@ -34,27 +43,27 @@ $(document).ready(function(){
 
   function judge() {
   if (userChoice + roboChoice == "rockscissors") {
-    score.html('WIN');
+    response(positive);
   } else if (userChoice + roboChoice == "paperrock") {
-    score.html('WIN');
+    response(positive);
   } else if (userChoice + roboChoice == "scissorspaper") {
-    score.html('WIN');
+    response(positive);
   };
 
   if (userChoice + roboChoice == "rockpaper") {
-    score.html('LOSS');
+    response(negative);
   } else if (userChoice + roboChoice == "paperscissors") {
-    score.html('LOSS');
+    response(negative);
   } else if (userChoice + roboChoice == "scissorsrock") {
-    score.html('LOSS');
+    response(negative);
   };
 
   if (userChoice + roboChoice == "rockrock") {
-    score.html('DRAW');
+    voice.html('DRAW');
   } else if (userChoice + roboChoice == "paperpaper") {
-    score.html('DRAW');
+    voice.html('DRAW');
   } else if (userChoice + roboChoice == "scissorsscissors") {
-    score.html('DRAW');
+    voice.html('DRAW');
   };
 
   }
