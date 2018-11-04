@@ -1,30 +1,46 @@
 $(document).ready(function(){
 
-  var randomResult = '';
+  var accent = "#c69c6d";
   var userChoice = '';
   var roboChoice = '';
   var options = ['rock', 'paper', 'scissors'];
-  var positive = ['Well played', 'Best 2 out of 3?', 'Ive gotta hand it to you'];
-  var negative = ['I almost feel bad for you', 'Maybe you should have stayed at home', 'Have fun drinking that!'];
+  var win = ['"Well played"', '"Best 2 out of 3?"', '"Ive gotta hand it to you"'];
+  var loss = ['"I almost feel bad for you"', '"Maybe you should have stayed at home"', '"Have fun drinking that!"'];
   var voice = $('.header');
+  var wins = 0;
+  var losses = 0;
+  var winsCounter = $('.wins');
+  var lossesCounter = $('.losses');
 
   function getNumber() {
     var maxNumber = 3;
     var randomNumber = Math.floor(Math.random()* maxNumber);
-    randomResult = randomNumber;
-    return false;
+    return randomNumber;
   }
 
   function response(outcome) {
-    getNumber();
+
+    var randomResult = getNumber();
     voice.html(outcome[randomResult]);
+
+    if (outcome == win ) {
+        wins += 1;
+        winsCounter.html(wins);
+        voice.css("color", "green");
+
+      } else {
+        losses +=1;
+        lossesCounter.html(losses);
+        voice.css("color", "red");
+      }
+
     return;
   }
 
-// generate random computer hand
+//generate random computer hand
 
   function roboThrow() {
-    getNumber();
+    var randomResult = getNumber();
     if (randomResult == 0) {
       $('#robo-hand').attr("src", "img/newRock_flipped.png");
       roboChoice = options[randomResult];
@@ -42,28 +58,39 @@ $(document).ready(function(){
 // rules
 
   function judge() {
+
   if (userChoice + roboChoice == "rockscissors") {
-    response(positive);
+    response(win);
+
   } else if (userChoice + roboChoice == "paperrock") {
-    response(positive);
+    response(win);
+
   } else if (userChoice + roboChoice == "scissorspaper") {
-    response(positive);
+    response(win);
   };
 
   if (userChoice + roboChoice == "rockpaper") {
-    response(negative);
+    response(loss);
+
   } else if (userChoice + roboChoice == "paperscissors") {
-    response(negative);
+    response(loss)
+
   } else if (userChoice + roboChoice == "scissorsrock") {
-    response(negative);
+    response(loss);
   };
 
   if (userChoice + roboChoice == "rockrock") {
-    voice.html('DRAW');
+    voice.css("color", accent);
+    voice.html('DRAW - SHOOT AGAIN!');
+
+
   } else if (userChoice + roboChoice == "paperpaper") {
-    voice.html('DRAW');
+    voice.css("color", accent);
+    voice.html('DRAW - SHOOT AGAIN!');
+
   } else if (userChoice + roboChoice == "scissorsscissors") {
-    voice.html('DRAW');
+    voice.css("color", accent);
+    voice.html('DRAW - SHOOT AGAIN!');
   };
 
   }
@@ -90,7 +117,6 @@ $(document).ready(function(){
     roboThrow();
     judge();
   });
-
 
 
 
