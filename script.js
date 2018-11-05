@@ -4,8 +4,8 @@ $(document).ready(function(){
   var userChoice = '';
   var roboChoice = '';
   var options = ['rock', 'paper', 'scissors'];
-  var win = ['"Well played"', '"Best 2 out of 3?"', '"Ive gotta hand it to you"'];
-  var loss = ['"I almost feel bad for you"', '"Maybe you should have stayed at home"', '"Have fun drinking that!"'];
+  var win = ['" Well played "', '" Best 2 out of 3? "', '" Ive gotta hand it to you "'];
+  var loss = ['" I almost feel bad for you "', '" Maybe you should have stayed at home "', '" Have fun drinking that! "'];
   var voice = $('.header');
   var wins = 0;
   var losses = 0;
