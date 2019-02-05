@@ -18,6 +18,7 @@ $(document).ready(function(){
     return randomNumber;
   }
 
+// generate computer response based on outcome of round
   function response(outcome) {
 
     var randomResult = getNumber();
@@ -98,21 +99,21 @@ $(document).ready(function(){
 // game is played
 
   $('#rock-thumb').click(function(){
-    $('#user-hand').attr("src", "../img/newRock.png");
+    $('#user-hand').attr("src", "img/newRock.png");
     userChoice = options[0];
     roboThrow();
     judge();
   });
 
   $('#paper-thumb').click(function(){
-    $('#user-hand').attr("src", "../img/paper1.png");
+    $('#user-hand').attr("src", "img/paper1.png");
     userChoice = options[1];
     roboThrow();
     judge();
   });
 
   $('#scissors-thumb').click(function(){
-    $('#user-hand').attr("src", "../img/scissors1.png");
+    $('#user-hand').attr("src", "img/scissors1.png");
     userChoice = options[2];
     roboThrow();
     judge();
